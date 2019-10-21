@@ -15,7 +15,7 @@ namespace OrderAPI.Model
         [Required]
         public Customer customer { set; get; }
         [Required]
-        public virtual ICollection<OrderLine> OrderLines { set; get; }
+        public ICollection<OrderLine> OrderLines { set; get; }
         //Default Done = false
         public bool Done { set; get; }
     }
