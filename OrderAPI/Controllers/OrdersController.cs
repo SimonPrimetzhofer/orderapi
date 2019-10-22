@@ -27,8 +27,8 @@ namespace OrderAPI.Controllers
 
             //Include for joining foreign key relation-objects
             return await _context.Orders
-                .Include(o => o.customer)
-                .Include(o => o.customer.Group)
+                .Include(o => o.Customer)
+                .Include(o => o.Customer.Group)
                 .Include(o => o.OrderLines)
                 .ToListAsync();
         }

@@ -13,7 +13,7 @@ namespace OrderAPI.Model
         [Required]
         public DateTime DateTo { set; get; }
         [Required]
-        public Customer customer { set; get; }
+        public Customer Customer { set; get; }
         [Required]
         public ICollection<OrderLine> OrderLines { set; get; }
         //Default Done = false
