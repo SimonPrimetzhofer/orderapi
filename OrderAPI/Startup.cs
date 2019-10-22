@@ -36,7 +36,8 @@ namespace OrderAPI
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
 
-            services.AddOpenApiDocument();
+            //For usage with ng-swagger-gen, AddSwaggerDocument instead of AddOpenAPIDocument is needed
+            services.AddSwaggerDocument();
 
             services.AddControllers();
         }
@@ -49,7 +50,8 @@ namespace OrderAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //ng-swagger-gen doesn't work on localhost with https due to certificate problems
+            //app.UseHttpsRedirection();
 
             app.UseCors(options => options.AllowAnyOrigin());
 
