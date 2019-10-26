@@ -33,6 +33,18 @@ namespace OrderAPI.Controllers
                 .ToListAsync();
         }
 
+        // GET: api/Orders/ByGroup/:id
+        [HttpGet("ByGroup/{groupId}")]
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrdersByGroupId(int groupId)
+        {
+            return await _context.Orders
+                .Where(o => o.Customer.Group.Id == groupId && o.Done == false)
+                .Include(o => o.Customer)
+                .Include(o => o.Customer.Group)
+                .Include(o => o.OrderLines)
+                .ToListAsync();
+        }
+
         // GET: api/Orders/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
