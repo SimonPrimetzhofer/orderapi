@@ -110,7 +110,7 @@ namespace OrderAPI.Migrations
             modelBuilder.Entity("OrderAPI.Model.Customer", b =>
                 {
                     b.HasOne("OrderAPI.Model.Group", "Group")
-                        .WithMany()
+                        .WithMany("Customers")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
