@@ -15,6 +15,7 @@ namespace OrderAPI.Model
         public string Name { set; get; }
         [Required]
         public string Rank { set; get; }
+        public int GroupId { set; get; }
         [Required]
         public Group Group { set; get; }
     }

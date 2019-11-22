@@ -12,6 +12,7 @@ namespace OrderAPI.Model
         public int Id { set; get; }
         [Required]
         public DateTime DateTo { set; get; }
+        public int CustomerId { set; get; }
         [Required]
         public Customer Customer { set; get; }
         [Required]
