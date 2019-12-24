@@ -13,7 +13,7 @@ namespace OrderAPI.Controllers
     [ApiController]
     public class OrdersController : ControllerBase
     {
-        private readonly OrderContext _context;
+        private readonly OrderContext _context; 
 
         public OrdersController(OrderContext context)
         {
@@ -97,7 +97,13 @@ namespace OrderAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
+
+            //Get managed object from context, otherwise EF wants to insert a new customer
+            var c = await _context.Customers.FindAsync(order.CustomerId);
+            order.Customer = c;
+
             _context.Orders.Add(order);
+            
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetOrder", new { id = order.Id }, order);
